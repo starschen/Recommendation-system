@@ -3,8 +3,8 @@
 
 from user_cf import user_cf
 from operator import itemgetter
+from settings import K
 
-K=5
 def coverage(train,test,W, N):
     recommend_items=set()
     all_items=set()

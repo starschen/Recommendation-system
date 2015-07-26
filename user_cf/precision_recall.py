@@ -3,8 +3,7 @@
 
 from user_cf import user_cf
 from operator import itemgetter
-
-K = 5
+from settings import K
 
 def precision(train,test, W, N):
 	hit=0

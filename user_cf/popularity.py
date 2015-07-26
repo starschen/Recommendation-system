@@ -3,7 +3,8 @@
 
 from user_cf import user_cf
 import math
-K = 5
+from settings import K
+
 def popularity(train,test, W, N):
     item_popularity=dict()
     for user,items in train.items():

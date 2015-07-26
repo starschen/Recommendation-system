@@ -6,6 +6,7 @@ from precision_recall import precision,recall
 from coverage import coverage
 from popularity import popularity
 import time
+from settings import *
 
 def load_data(name):
     records = [] # key => items
@@ -20,9 +21,9 @@ ratings = load_data('ml-1m/ratings.dat')
 movies = load_data('ml-1m/movies.dat')
 
 
-M = 8
+k = 5
 seed = time.time()
-train,test = splitdata(ratings,M,5,seed)
+train,test = splitdata(ratings,M,k,seed)
 
 def list_to_dict(rating):
     return {'uid': rating[0],'movieid': rating[1],'rating': rating[2],'time': rating[3]}
@@ -36,11 +37,9 @@ print 'improve_cos ...'
 W = improve_cos(train)
 
 print 'user_cf ...'
-K = 5
 for user in users:
 	rank = user_cf(user[0],train,W,K)
 	#print rank
-N = 10
 print precision(train,test, W, N)
 print recall(train,test,W, N)
 print coverage(train,test, W, N)
